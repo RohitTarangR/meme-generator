@@ -1,0 +1,120 @@
+import React from "react";
+import { Menu, X } from "lucide-react";
+import logo from "../../assets/images/logo.png";
+import { Link } from "react-router-dom";
+
+const menuItems = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "About",
+    href: "/about",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
+];
+
+export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <>
+      <div className="relative w-full bg-black shadow-lg shadow-slate-800">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+          <Link to="/">
+            <div className="inline-flex items-center space-x-2">
+              <div className="w-8">
+                <img src={logo} alt="" />
+              </div>
+              <span className="font-bold text-white">Meme Viewer</span>
+            </div>
+          </Link>
+          <div className="hidden lg:block">
+            <ul className="inline-flex space-x-8">
+              {menuItems.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-sm font-semibold text-white hover:text-slate-400 transition-all duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="hidden lg:block transition-all duration-700">
+            <button
+              type="button"
+              className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-black hover:shadow-lg hover:shadow-slate-200 hover:bg-slate-200 transition-all duration-1000"
+            >
+              Post Your Meme
+            </button>
+          </div>
+          <div className="lg:hidden">
+            <Menu
+              onClick={toggleMenu}
+              className="h-8 w-8 cursor-pointer text-white items-center p-1 justify-center rounded-md hover:bg-gray-400 hover:text-white transition-all duration-200"/>
+          </div>
+          {isMenuOpen && (
+            <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
+              <div className="divide-y-2 divide-gray-50 rounded-lg text-white bg-black shadow-lg ring-1 ring-black ring-opacity-5">
+                <div className="px-5 pb-6 pt-5">
+                  <div className="flex items-center justify-between">
+                    <Link to="/">
+                      <div className="inline-flex items-center space-x-2">
+                        <div className="w-10">
+                          <img src={logo} alt="" />
+                        </div>
+                        <span className="font-bold">Meme Viewer</span>
+                      </div>
+                    </Link>
+                    <div className="-mr-2">
+                      <button
+                        type="button"
+                        onClick={toggleMenu}
+                        className="inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-400 hover:text-white transition-all duration-200"
+                      >
+                        <span className="sr-only">Close menu</span>
+                        <X className="h-6 w-6" aria-hidden="true" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <nav className="grid gap-y-4">
+                      {menuItems.map((item) => (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-400"
+                        >
+                          <span className="ml-3 font-medium text-white">
+                            {item.name}
+                          </span>
+                        </Link>
+                      ))}
+                    </nav>
+                  </div>
+                  <button
+                    type="button"
+                    className="mt-10 w-full rounded-md bg-gray-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  >
+                    Post Your Meme
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
