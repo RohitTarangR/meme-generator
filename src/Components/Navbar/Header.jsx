@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const menuItems = [
   {
@@ -27,7 +27,7 @@ export function Header() {
 
   return (
     <>
-      <div className="relative w-full bg-black shadow-lg shadow-slate-800">
+      <div className="relative w-full bg-black">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <Link to="/">
             <div className="inline-flex items-center space-x-2">
@@ -41,12 +41,17 @@ export function Header() {
             <ul className="inline-flex space-x-8">
               {menuItems.map((item) => (
                 <li key={item.name}>
-                  <Link
+                  <NavLink
                     to={item.href}
-                    className="text-sm font-semibold text-white hover:text-slate-400 transition-all duration-300"
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "bg-white text-black" : ""
+                      } text-sm font-semibold py-2 px-3 rounded-full text-white transition-all duration-300`
+                    }
                   >
                     {item.name}
-                  </Link>
+                  </NavLink>
+
                 </li>
               ))}
             </ul>
@@ -54,7 +59,7 @@ export function Header() {
           <div className="hidden lg:block transition-all duration-700">
             <button
               type="button"
-              className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-black hover:shadow-lg hover:shadow-slate-200 hover:bg-slate-200 transition-all duration-1000"
+              className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-green-500 hover:text-white hover:rounded-full transition-all duration-300 "
             >
               Post Your Meme
             </button>
@@ -62,7 +67,8 @@ export function Header() {
           <div className="lg:hidden">
             <Menu
               onClick={toggleMenu}
-              className="h-8 w-8 cursor-pointer text-white items-center p-1 justify-center rounded-md hover:bg-gray-400 hover:text-white transition-all duration-200"/>
+              className="h-8 w-8 cursor-pointer text-white items-center p-1 justify-center rounded-md hover:bg-gray-400 hover:text-white transition-all duration-200"
+            />
           </div>
           {isMenuOpen && (
             <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
