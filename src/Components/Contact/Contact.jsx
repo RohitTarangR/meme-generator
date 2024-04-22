@@ -29,7 +29,7 @@ const Contact = () => {
           <p className="text-lg">
             Give us a call at{" "}
             <a href="tel:+123456789" className="text-blue-500 hover:underline">
-              +1 (234) 567-89
+              (+91) 1234567890
             </a>{" "}
             during our business hours: Monday to Friday, 9:00 AM - 5:00 PM.
           </p>

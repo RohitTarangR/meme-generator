@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Link, NavLink } from "react-router-dom";
@@ -19,10 +19,28 @@ const menuItems = [
 ];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleNavLinkClick = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -48,6 +66,7 @@ export function Header() {
                         isActive ? "bg-white text-black" : "text-white"
                       } text-sm font-semibold py-2 px-3 rounded-full  transition-all duration-300`
                     }
+                    onClick={handleNavLinkClick}
                   >
                     {item.name}
                   </NavLink>
@@ -70,7 +89,10 @@ export function Header() {
             />
           </div>
           {isMenuOpen && (
-            <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
+            <div
+              ref={menuRef}
+              className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden"
+            >
               <div className="divide-y-2 divide-gray-50 rounded-lg text-white bg-black shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="px-5 pb-6 pt-5">
                   <div className="flex items-center justify-between">
@@ -100,7 +122,7 @@ export function Header() {
                           key={item.name}
                           to={item.href}
                           className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-400"
-                          // className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-400"
+                          onClick={handleNavLinkClick}
                         >
                           <span className="ml-3 font-medium text-white">
                             {item.name}
