@@ -15,10 +15,10 @@ const Footer = () => {
             </Link>
 
             <nav className="flex flex-wrap justify-center md:justify-end space-x-5 mb-4 md:mb-0">
-              <FooterLink to="#" text="Privacy Policy"  />
-              <FooterLink to="#" text="Terms of Service"  />
-              <FooterLink to="/contact" text="Contact Us"  />
-              <FooterLink to="/about" text="About Us"  />
+              <FooterLink to="#" text="Privacy Policy" />
+              <FooterLink to="#" text="Terms of Service" />
+              <FooterLink to="/contact" text="Contact Us" />
+              <FooterLink to="/about" text="About Us" />
             </nav>
 
             <div className="flex justify-center max-lg:py-2 space-x-5">
@@ -39,7 +39,9 @@ const Footer = () => {
           className="text-[#e13053] hover:bg-white p-2 rounded-full transition-all duration-300"
         >
           {/* <span className="">Instagram</span> */}
-          <FaInstagram />
+          <span className="flex items-center">
+            Instagram <FaInstagram className="mx-1" />
+          </span>
         </a>
       </div>
     </>
