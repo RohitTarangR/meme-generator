@@ -31,12 +31,19 @@ const MemeCard = () => {
     setLikedMemes(updatedLikedMemes);
   };
 
-const generateMoreMemes = async () => {
-  setLoading(true);
-  await fetchMemes();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
+  const generateMoreMemes = async () => {
+    setLoading(true);
+    const response = await fetch("https://meme-api.com/gimme/12");
+    const data = await response.json();
+    const newMemes = data.memes;
+    setMemes((prevMemes) => [...prevMemes, ...newMemes]);
+    setLikedMemes((prevLikedMemes) => [
+      ...prevLikedMemes,
+      ...Array(newMemes.length).fill(false),
+    ]);
+    setLoading(false);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  };
 
   if (loading) {
     return (
@@ -84,7 +91,7 @@ const generateMoreMemes = async () => {
           </div>
         ))}
       </div>
-      <div className="my-3 justify-center flex items-center space-x-2 px-4 py-2  text-black rounded-full hover:bg-black hover:text-white border border-black transition-border duration-300 cursor-pointer">
+      <div className="mx-auto my-3 w-56 justify-center flex items-center space-x-2 px-4 py-2  text-black rounded-full hover:bg-black hover:text-white border border-black transition-border duration-300 cursor-pointer">
         <button onClick={generateMoreMemes} className="">
           Generate More
         </button>
