@@ -42,6 +42,7 @@ const MemeCard = () => {
       ...Array(newMemes.length).fill(false),
     ]);
     setLoading(false);
+    console.log(window.scrollTo())
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 

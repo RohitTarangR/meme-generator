@@ -64,7 +64,7 @@ export function Header() {
                     className={({ isActive }) =>
                       `${
                         isActive ? "bg-white text-black" : "text-white"
-                      } text-sm font-semibold py-2 px-3 rounded-full  transition-all duration-300`
+                      } text-sm font-semibold py-2 px-3 rounded-full  transition-all duration-300 hover:bg-white hover:text-black`
                     }
                     onClick={handleNavLinkClick}
                   >

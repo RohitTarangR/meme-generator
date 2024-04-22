@@ -52,6 +52,7 @@ const FooterLink = ({ to, text }) => {
   return (
     <Link
       to={to}
+      onClick={window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
       className="font-medium text-white hover:bg-white rounded-full hover:text-black transition-colors duration-300 py-1 px-2"
     >
       {text}
