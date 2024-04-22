@@ -30,7 +30,9 @@ const About = () => {
       </div>
       <div className="px-10">
         <div className="max-w-2xl mx-auto my-10">
-          <h1 className="text-3xl font-semibold mb-5 text-center">Content Guidelines</h1>
+          <h1 className="text-3xl font-semibold mb-5 text-center">
+            Content Guidelines
+          </h1>
           <h2 className="text-xl font-semibold mb-3">Types of Memes</h2>
           <p className="text-lg mb-5">
             Our meme gallery features a wide range of meme categories to cater

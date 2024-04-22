@@ -45,13 +45,12 @@ export function Header() {
                     to={item.href}
                     className={({ isActive }) =>
                       `${
-                        isActive ? "bg-white text-black" : ""
-                      } text-sm font-semibold py-2 px-3 rounded-full text-white transition-all duration-300`
+                        isActive ? "bg-white text-black" : "text-white"
+                      } text-sm font-semibold py-2 px-3 rounded-full  transition-all duration-300`
                     }
                   >
                     {item.name}
                   </NavLink>
-
                 </li>
               ))}
             </ul>
@@ -87,7 +86,7 @@ export function Header() {
                       <button
                         type="button"
                         onClick={toggleMenu}
-                        className="inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-400 hover:text-white transition-all duration-200"
+                        className="h-8 w-8 cursor-pointer text-white items-center p-1 justify-center rounded-md hover:bg-gray-400 hover:text-white transition-all duration-200"
                       >
                         <span className="sr-only">Close menu</span>
                         <X className="h-6 w-6" aria-hidden="true" />
@@ -101,6 +100,7 @@ export function Header() {
                           key={item.name}
                           to={item.href}
                           className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-400"
+                          // className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-400"
                         >
                           <span className="ml-3 font-medium text-white">
                             {item.name}
