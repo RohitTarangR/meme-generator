@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Link, NavLink } from "react-router-dom";
-
 const menuItems = [
   {
     name: "Home",
@@ -74,13 +73,21 @@ export function Header() {
               ))}
             </ul>
           </div>
-          <div className="hidden lg:block transition-all duration-700">
+          <div className="hidden lg:flex transition-all duration-700 items-center">
             <button
               type="button"
-              className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-green-500 hover:text-white hover:rounded-full transition-all duration-300 "
+              className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-green-700 hover:text-white transition-all duration-300 "
             >
               Post Your Meme
             </button>
+            <Link to={"/login"}>
+              <button
+                type="button"
+                className="rounded-md bg-white ml-1 px-3 py-2 text-sm font-semibold text-black hover:bg-green-700 hover:text-white full transition-all duration-300 "
+              >
+                Login
+              </button>
+            </Link>
           </div>
           <div className="lg:hidden">
             <Menu

@@ -6,6 +6,8 @@ import About from "./Components/About/About.jsx";
 import Contact from "./Components/Contact/Contact.jsx";
 import Home from "./Components/Home/Home.jsx";
 import MemeCard, { memeDataLoader } from "./Components/Card/MemeCard.jsx";
+import Login from "./Components/Login/Login.jsx";
+import SignUp from "./Components/Login/SignUp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },
